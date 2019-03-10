@@ -1,9 +1,11 @@
 import MinHeap from './minheap.js';
 
 class HuffmanNode { 
-    constructor(char, freq) {
+    constructor(char, freq, left, right) {
         this.char = char; 
         this.freq = freq;         
+        this.left = left;       
+        this.right = right;       
     }
 }
 
@@ -22,21 +24,20 @@ const huffmanEncode = (data) => {
         const x = priorityQueue.extractMin(); 
         const y = priorityQueue.extractMin(); 
         
-        const z = new HuffmanNode(null, x.freq + y.freq); 
-        z.left = x;
-        z.right = y;
+        const z = new HuffmanNode(null, x.freq + y.freq, x, y); 
+
         priorityQueue.insertKey(z);        
     } 
     
-    printCode(priorityQueue.getMin(), ""); 
+    printCode(priorityQueue.getMin(), ''); 
 };
   
 const printCode = (root, s) => { 
     if (root.char) { 
-        console.log(root.char + " : " + s); 
+        console.log(root.char + ' : ' + s); 
     } else {
-        printCode(root.left, s + "0"); 
-        printCode(root.right, s + "1"); 
+        printCode(root.left, s + '0'); 
+        printCode(root.right, s + '1'); 
     }
 }; 
 
