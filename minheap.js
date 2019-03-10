@@ -33,8 +33,8 @@ export default class MinHeap {
   
     minHeapify(i) {
 
-        const l = 2 * i + 1; 
-        const r = 2 * i + 2; 
+        const l = this.left(i); 
+        const r = this.right(i); 
 
         let smallest = i; 
 
